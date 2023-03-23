@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:run_rider/ui/screen/welcome_screen.dart';
-import 'package:run_rider/ui/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:run_rider/ui/widgets/gap.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:run_rider/ui/utils/colors.dart';
@@ -75,7 +76,7 @@ class TextFormWidget extends StatelessWidget {
           fontWeight: FontWeight.w400,
           color: AppColor.textgrey,
         ),
-        SizedBox(
+        Gap(
           height: 10.h,
         ),
         Container(
@@ -88,11 +89,11 @@ class TextFormWidget extends StatelessWidget {
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.fromLTRB(20.w, 19.w, 20.w, 19.w),
                 border: InputBorder.none,
-                // labelText: label ?? '',
-                // labelStyle: TextStyle(
-                //     color: AppColor.textgrey,
-                //     fontSize: 14.sp,
-                //     fontWeight: FontWeight.w400),
+                labelText: label ?? '',
+                labelStyle: TextStyle(
+                    color: AppColor.textgrey,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400),
                 // border: OutlineInputBorder(
                 //   borderRadius: BorderRadius.circular(10.r),
                 //   borderSide: BorderSide(width: 1.w, color: AppColor.textgrey),

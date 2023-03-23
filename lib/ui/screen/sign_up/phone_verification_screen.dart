@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:run_rider/ui/widgets/gap.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../utils/colors.dart';
 import '../../widgets/button_widget.dart';
 import '../../widgets/text_view_widget.dart';
+import 'infor.dart';
 
 class PhoneVerificationScreen extends StatelessWidget {
   const PhoneVerificationScreen({super.key});
@@ -23,7 +25,7 @@ class PhoneVerificationScreen extends StatelessWidget {
                 fontSize: 24.sp,
                 fontWeight: FontWeight.w500,
               ),
-              SizedBox(height: 104.h),
+              Gap(height: 104.h),
               Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -40,10 +42,10 @@ class PhoneVerificationScreen extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       color: AppColor.textgrey,
                     ),
-                    SizedBox(
+                    Gap(
                       height: 15.h,
                     ),
-                    SizedBox(
+                    Gap(
                       child: PinCodeTextField(
                         // controller: verification_codeController,
                         backgroundColor: AppColor.transparent,
@@ -75,16 +77,21 @@ class PhoneVerificationScreen extends StatelessWidget {
                         appContext: context,
                       ),
                     ),
-                    SizedBox(height: 32.h),
-                    ButtonWidget(
-                      color: AppColor.white,
-                      buttonColor: AppColor.primary,
-                      buttonText: 'PROCEED',
-                      buttonBorderColor: AppColor.primary,
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PhoneVerificationScreen()),
+                    Gap(height: 32.h),
+                    Align(
+                      alignment: Alignment.center,
+                      child: ButtonWidget(
+                        width: 299.w,
+                        color: AppColor.white,
+                        buttonColor: AppColor.primary,
+                        buttonText: 'PROCEED',
+                        buttonBorderColor: AppColor.primary,
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => InfoPage(),
+                          ),
+                        ),
                       ),
                     )
                   ]),

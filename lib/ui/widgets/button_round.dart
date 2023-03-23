@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:run_rider/ui/widgets/text_view_widget.dart';
 
-class ButtonWidget extends StatelessWidget {
-  const ButtonWidget(
+class ButtonRound extends StatelessWidget {
+  const ButtonRound(
       {super.key,
       this.buttonText,
       this.width,
@@ -25,14 +25,16 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints.tightFor(width: width, height: 50),
+      constraints: BoxConstraints.tightFor(width: width, height: 50.h),
       child: TextButton(
           onPressed: onPressed,
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(buttonColor!),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(
+                  50.r,
+                ),
                 side: BorderSide(
                   color: buttonBorderColor!,
                   width: 1,
@@ -42,7 +44,7 @@ class ButtonWidget extends StatelessWidget {
           ),
           child: TextView(
             text: buttonText!,
-            fontSize: 16.sp,
+            fontSize: 14.sp,
             color: color,
             fontWeight: FontWeight.w600,
           )),

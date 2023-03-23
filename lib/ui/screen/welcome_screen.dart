@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:run_rider/ui/widgets/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:run_rider/ui/screen/sign_up/get_starter_screen.dart';
 import 'package:run_rider/ui/utils/colors.dart';
 import 'package:run_rider/ui/widgets/button_widget.dart';
+
+import 'home/Dashboard/dashboard.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -23,20 +27,27 @@ class WelcomeScreen extends StatelessWidget {
                     image: AssetImage('assets/images/runicon.png'),
                   ),
                 )),
-            const SizedBox(
+            const Gap(
               height: 36,
             ),
             ButtonWidget(
+              width: 299.w,
               color: AppColor.white,
               buttonColor: AppColor.primary,
               buttonText: 'Sign in',
               buttonBorderColor: AppColor.primary,
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Dashboard(),
+                ),
+              ),
             ),
-            const SizedBox(
+            const Gap(
               height: 16,
             ),
             ButtonWidget(
+              width: 299.w,
               color: AppColor.primary,
               buttonColor: Colors.white,
               buttonText: 'Sign up',

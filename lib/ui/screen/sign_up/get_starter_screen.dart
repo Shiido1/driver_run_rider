@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:run_rider/ui/widgets/gap.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:run_rider/ui/screen/sign_up/phone_verification_screen.dart';
 import 'package:run_rider/ui/utils/colors.dart';
@@ -26,7 +27,7 @@ class GetStarter extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: AppColor.primary,
             ),
-            SizedBox(
+            Gap(
               height: 26.h,
             ),
             TextView(
@@ -34,7 +35,7 @@ class GetStarter extends StatelessWidget {
               fontSize: 24.sp,
               fontWeight: FontWeight.w500,
             ),
-            SizedBox(
+            Gap(
               height: .6.h,
             ),
             TextView(
@@ -43,35 +44,40 @@ class GetStarter extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: AppColor.textgrey,
             ),
-            SizedBox(
+            Gap(
               height: 32.h,
             ),
             TextFormWidget(
               text: 'Select your country',
             ),
-            SizedBox(
+            Gap(
               height: 32.h,
             ),
             TextFormWidget(
               text: 'Phone Number',
             ),
-            SizedBox(
+            Gap(
               height: 32.h,
             ),
             TextFormWidget(
               text: 'Email',
             ),
-            SizedBox(height:52.h),
-
-            ButtonWidget(color: AppColor.white,
-              buttonColor: AppColor.primary,
-              buttonText: 'PROCEED',
-              buttonBorderColor: AppColor.primary,
-              onPressed: ()=> Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PhoneVerificationScreen()),
+            Gap(height: 52.h),
+            Align(
+              alignment: Alignment.center,
+              child: ButtonWidget(
+                width: 299.w,
+                color: AppColor.white,
+                buttonColor: AppColor.primary,
+                buttonText: 'PROCEED',
+                buttonBorderColor: AppColor.primary,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PhoneVerificationScreen()),
+                ),
               ),
-              )
+            )
           ],
         ),
       ),
