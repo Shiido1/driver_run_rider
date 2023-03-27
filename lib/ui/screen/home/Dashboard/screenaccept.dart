@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:run_rider/ui/screen/home/Dashboard/Screen/arrived.dart';
 import 'package:run_rider/ui/screen/home/Dashboard/dashboard2.dart';
+import 'package:run_rider/ui/screen/home/Dashboard/drive_arrived.dart';
 import 'package:run_rider/ui/screen/home/Profile/profile.dart';
 import 'package:run_rider/ui/utils/colors.dart';
 import 'package:run_rider/ui/widgets/button_widget.dart';
@@ -9,11 +12,9 @@ import 'package:run_rider/ui/widgets/gap.dart';
 import 'package:run_rider/ui/widgets/text_view_widget.dart';
 
 import 'Widget/drawer_menu.dart';
-import 'Widget/widget_sheet.dart';
 
-// this is to send the user to
-class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
+class ScreenAccept extends StatelessWidget {
+  const ScreenAccept({super.key});
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -149,6 +150,7 @@ class Dashboard extends StatelessWidget {
                   padding: EdgeInsets.only(
                     left: 25.w,
                     right: 25.w,
+                    top: 10.w,
                   ),
                   child: Row(
                     children: [
@@ -179,55 +181,47 @@ class Dashboard extends StatelessWidget {
                         ),
                       ),
                       Gap(
-                        width: 39.w,
+                        width: 67.w,
                       ),
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 40.h),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ArrivedPage(),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: 10.h,
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ArrivedPage(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 22.w,
+                              vertical: 15.w,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(
+                                100.r,
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset('assets/images/cancel.svg'),
+                                Gap(
+                                  width: 6.w,
                                 ),
-                              );
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 48.w,
-                                vertical: 7.w,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppColor.primary,
-                                borderRadius: BorderRadius.circular(
-                                  100.r,
+                                Text(
+                                  'No Thanks',
+                                  style: GoogleFonts.montserrat(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp,
+                                  ),
                                 ),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  TextView(
-                                    text: 'Todays Earning',
-                                    fontSize: 12.sp,
-                                    color: AppColor.white,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                  TextView(
-                                    text: 'NGN 154.75',
-                                    fontSize: 18.sp,
-                                    color: AppColor.white,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  TextView(
-                                    text: '40 trips',
-                                    fontSize: 12.sp,
-                                    color: AppColor.white,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ],
-                              ),
+                              ],
                             ),
                           ),
                         ),
@@ -239,54 +233,11 @@ class Dashboard extends StatelessWidget {
                   flex: 1,
                   child: Container(),
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DashboardFind(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 83.w,
-                    height: 83.w,
-                    decoration: BoxDecoration(
-                      color: AppColor.primary,
-                      borderRadius: BorderRadius.circular(
-                        100.r,
-                      ),
-                    ),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 4.h,
-                        vertical: 4.h,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColor.white,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(
-                          100.r,
-                        ),
-                      ),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: TextView(
-                          text: 'GO',
-                          fontSize: 22.sp,
-                          color: AppColor.white,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Gap(
-                  height: 18.h,
-                ),
                 Container(
+                  width: 428.w,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 14.w,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(
@@ -299,63 +250,110 @@ class Dashboard extends StatelessWidget {
                     color: AppColor.white,
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
+                      Gap(
+                        height: 14.h,
+                      ),
+                      TextView(
+                        text: '25 min',
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.black,
+                      ),
+                      Gap(
+                        height: 15.h,
+                      ),
+                      Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 15.w,
-                          vertical: 15.w,
-                        ),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: 1.0,
-                              color: AppColor.grey,
-                            ),
-                          ),
+                          horizontal: 50.w,
                         ),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Expanded(
-                              flex: 0,
-                              child: Icon(
-                                Icons.keyboard_arrow_down_outlined,
-                                size: 40,
-                                color: AppColor.black,
-                              ),
+                            TextView(
+                              text: '\$12.50',
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.textgrey,
                             ),
-                            Gap(
-                              width: 50.w,
+                            TextView(
+                              text: '4.5 km',
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.textgrey,
                             ),
-                            Expanded(
-                              flex: 1,
-                              child: TextView(
-                                text: 'You\'re offline',
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
+                            TextView(
+                              text: '3.5',
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.textgrey,
                             ),
                           ],
                         ),
                       ),
+                      Gap(
+                        height: 18.h,
+                      ),
                       Row(
                         children: [
-                          const WidgetSheet(
-                            asset: 'assets/images/sub.svg',
-                            percent: '95.0%',
-                            text: 'Acceptance',
+                          SvgPicture.asset(
+                            'assets/images/drop.svg',
+                            width: 14.w,
+                            height: 17.h,
                           ),
-                          const WidgetSheet(
-                            asset: 'assets/images/star.svg',
-                            percent: '4.75',
-                            text: 'Rating',
+                          Gap(
+                            width: 6.w,
                           ),
-                          const WidgetSheet(
-                            asset: 'assets/images/cx.svg',
-                            percent: '2.0%',
-                            text: 'Cancelleation',
+                          TextView(
+                            text: '1 Ash Park, Pembroke Dock, SA72',
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.black,
                           ),
                         ],
+                      ),
+                      Gap(
+                        height: 15.h,
+                      ),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/images/off.svg',
+                            width: 14.w,
+                            height: 17.h,
+                          ),
+                          Gap(
+                            width: 6.w,
+                          ),
+                          TextView(
+                            text: 'Gcl Plaza, Aminu Kano Crescent, Wuse 2',
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.black,
+                          ),
+                        ],
+                      ),
+                      Gap(
+                        height: 20.h,
+                      ),
+                      ButtonWidget(
+                        width: 228.w,
+                        buttonText: 'TAP TO ACCEPT',
+                        color: AppColor.white,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const DriveArrive(),
+                            ),
+                          );
+                        },
+                        buttonBorderColor: AppColor.primary,
+                        buttonColor: AppColor.primary,
+                      ),
+                      Gap(
+                        height: 23.h,
                       ),
                     ],
                   ),

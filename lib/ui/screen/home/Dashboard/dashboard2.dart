@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:run_rider/ui/screen/home/Dashboard/Screen/arrived.dart';
-import 'package:run_rider/ui/screen/home/Dashboard/dashboard2.dart';
+import 'package:run_rider/ui/screen/home/Dashboard/screenaccept.dart';
 import 'package:run_rider/ui/screen/home/Profile/profile.dart';
 import 'package:run_rider/ui/utils/colors.dart';
 import 'package:run_rider/ui/widgets/button_widget.dart';
@@ -9,11 +12,38 @@ import 'package:run_rider/ui/widgets/gap.dart';
 import 'package:run_rider/ui/widgets/text_view_widget.dart';
 
 import 'Widget/drawer_menu.dart';
-import 'Widget/widget_sheet.dart';
 
-// this is to send the user to
-class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
+class DashboardFind extends StatefulWidget {
+  const DashboardFind({super.key});
+
+  @override
+  State<DashboardFind> createState() => _DashboardFindState();
+}
+
+class _DashboardFindState extends State<DashboardFind> {
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  startTimer() async {
+    var duration = const Duration(seconds: 4);
+    return Timer(
+      duration,
+      route,
+    );
+  }
+
+  route() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ScreenAccept(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -239,48 +269,80 @@ class Dashboard extends StatelessWidget {
                   flex: 1,
                   child: Container(),
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DashboardFind(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 83.w,
-                    height: 83.w,
-                    decoration: BoxDecoration(
-                      color: AppColor.primary,
-                      borderRadius: BorderRadius.circular(
-                        100.r,
-                      ),
-                    ),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 4.h,
-                        vertical: 4.h,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 11.w,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 54.w,
+                        height: 60.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            100.r,
+                          ),
                           color: AppColor.white,
-                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(
-                          100.r,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: SvgPicture.asset(
+                            'assets/images/wave.svg',
+                            width: 21.w,
+                            height: 25.h,
+                          ),
                         ),
                       ),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: TextView(
-                          text: 'GO',
-                          fontSize: 22.sp,
+                      Container(
+                        width: 83.w,
+                        height: 83.w,
+                        decoration: BoxDecoration(
                           color: AppColor.white,
-                          fontWeight: FontWeight.w400,
+                          borderRadius: BorderRadius.circular(
+                            100.r,
+                          ),
+                        ),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 4.h,
+                            vertical: 4.h,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: AppColor.red,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              100.r,
+                            ),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: TextView(
+                              text: 'Stop',
+                              fontSize: 22.sp,
+                              color: AppColor.red,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      Container(
+                        height: 60.h,
+                        width: 54.w,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 17.w,
+                          vertical: 14.w,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            100.r,
+                          ),
+                          color: AppColor.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Gap(
@@ -296,7 +358,7 @@ class Dashboard extends StatelessWidget {
                         15.r,
                       ),
                     ),
-                    color: AppColor.white,
+                    color: const Color(0XFFF2F5F7),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -304,24 +366,27 @@ class Dashboard extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 15.w,
-                          vertical: 15.w,
+                          vertical: 10.w,
                         ),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: 1.0,
-                              color: AppColor.grey,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                              15.r,
+                            ),
+                            topRight: Radius.circular(
+                              15.r,
                             ),
                           ),
+                          color: AppColor.white,
                         ),
                         child: Row(
                           children: [
                             const Expanded(
                               flex: 0,
                               child: Icon(
-                                Icons.keyboard_arrow_down_outlined,
+                                Icons.keyboard_arrow_up_outlined,
                                 size: 40,
-                                color: AppColor.black,
+                                color: Color(0XFF000000),
                               ),
                             ),
                             Gap(
@@ -330,32 +395,45 @@ class Dashboard extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: TextView(
-                                text: 'You\'re offline',
+                                text: 'Finding pickups',
                                 fontSize: 18.sp,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
+                                color: AppColor.black,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Row(
-                        children: [
-                          const WidgetSheet(
-                            asset: 'assets/images/sub.svg',
-                            percent: '95.0%',
-                            text: 'Acceptance',
-                          ),
-                          const WidgetSheet(
-                            asset: 'assets/images/star.svg',
-                            percent: '4.75',
-                            text: 'Rating',
-                          ),
-                          const WidgetSheet(
-                            asset: 'assets/images/cx.svg',
-                            percent: '2.0%',
-                            text: 'Cancelleation',
-                          ),
-                        ],
+                      Gap(
+                        height: 18.h,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.w,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextView(
+                              text: 'Opportunity nearby',
+                              fontSize: 18.sp,
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            Gap(
+                              height: 6.h,
+                            ),
+                            TextView(
+                              text: 'More requests than usual',
+                              fontSize: 14.sp,
+                              color: AppColor.textgrey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            Gap(
+                              height: 20.h,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
